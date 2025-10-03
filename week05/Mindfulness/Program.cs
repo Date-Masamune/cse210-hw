@@ -1,9 +1,45 @@
 using System;
 
-class Program
+namespace MindfulnessApp
 {
-    static void Main(string[] args)
+    /*
+      EXCEEDING REQUIREMENTS:
+      - ReflectingActivity shuffles its questions so none repeat until all are used in a session.
+      - Simple file logging (activity_log.txt) records each completed activity with timestamp and duration.
+    */
+    class Program
     {
-        Console.WriteLine("Hello World! This is the Mindfulness Project.");
+        static void Main()
+        {
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("Mindfulness Activities\n");
+                Console.WriteLine("1) Breathing");
+                Console.WriteLine("2) Reflecting");
+                Console.WriteLine("3) Listing");
+                Console.WriteLine("4) Quit");
+                Console.Write("\nChoose an option: ");
+                var choice = Console.ReadLine();
+
+                Activity activity = choice switch
+                {
+                    "1" => new BreathingActivity(),
+                    "2" => new ReflectingActivity(),
+                    "3" => new ListingActivity(),
+                    "4" => null,
+                    _ => null
+                };
+
+                if (choice == "4") break;
+                if (activity == null) continue;
+
+                activity.Start();
+                activity.Run();
+                activity.End();
+            }
+
+            Console.WriteLine("\nGoodbye!\n");
+        }
     }
 }
