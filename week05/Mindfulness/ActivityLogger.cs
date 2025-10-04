@@ -16,7 +16,7 @@ namespace MindfulnessApp
             }
             catch
             {
-                
+                // ignore logging errors
             }
         }
     }

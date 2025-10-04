@@ -46,7 +46,6 @@ namespace MindfulnessApp
 
             var end = DateTime.Now.AddSeconds(DurationSeconds);
 
-            // shuffle questions so none repeat until all are used this session
             var bag = new List<string>(Questions);
             Shuffle(bag);
 
@@ -54,7 +53,7 @@ namespace MindfulnessApp
             while (DateTime.Now < end)
             {
                 Console.Write($"- {bag[idx]} ");
-                ShowSpinner(8);   // pause/spinner between questions
+                ShowSpinner(8);
                 Console.WriteLine();
 
                 idx++;

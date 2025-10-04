@@ -2,11 +2,6 @@ using System;
 
 namespace MindfulnessApp
 {
-    /*
-      EXCEEDING REQUIREMENTS:
-      - ReflectingActivity shuffles its questions so none repeat until all are used in a session.
-      - Simple file logging (activity_log.txt) records each completed activity with timestamp and duration.
-    */
     class Program
     {
         static void Main()
@@ -14,7 +9,7 @@ namespace MindfulnessApp
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("Mindfulness Activities\n");
+                Console.WriteLine("Mindfulness Activities");
                 Console.WriteLine("1) Breathing");
                 Console.WriteLine("2) Reflecting");
                 Console.WriteLine("3) Listing");

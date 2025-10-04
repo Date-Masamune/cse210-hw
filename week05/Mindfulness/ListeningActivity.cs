@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace MindfulnessApp
 {
@@ -37,12 +38,15 @@ namespace MindfulnessApp
 
             while (DateTime.Now < end)
             {
+                var remaining = end - DateTime.Now;
+                if (remaining <= TimeSpan.Zero) break;
+
                 Console.Write("> ");
-                if (Console.KeyAvailable)
+                string line = ReadLineWithTimeout(remaining);
+
+                if (!string.IsNullOrWhiteSpace(line))
                 {
-                    string? line = Console.ReadLine();
-                    if (!string.IsNullOrWhiteSpace(line))
-                        items.Add(line.Trim());
+                    items.Add(line.Trim());
                 }
                 else
                 {
@@ -51,6 +55,12 @@ namespace MindfulnessApp
             }
 
             Console.WriteLine($"\nYou listed {items.Count} item(s).");
+        }
+
+        private static string ReadLineWithTimeout(TimeSpan timeout)
+        {
+            var readTask = Task.Run(Console.ReadLine);
+            return readTask.Wait(timeout) ? (readTask.Result ?? string.Empty) : string.Empty;
         }
     }
 }
