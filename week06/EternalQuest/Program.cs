@@ -1,9 +1,21 @@
+/*
+Exceeding Requirements(Creativity):
+-Added a lightweight Leveling system:
+  • Every 500 points increases your Level.
+  • The menu shows Level and points needed to reach the next Level.
+  • A “Level Up” message appears when you cross a threshold.
 using System;
+*/
 
-class Program
+namespace GoalTracker
 {
-    static void Main(string[] args)
+    public class Program
     {
-        Console.WriteLine("Hello World! This is the EternalQuest Project.");
+        public static void Main()
+        {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            var manager = new GoalManager();
+            manager.RunMenu();
+        }
     }
 }
